@@ -1,0 +1,13 @@
+<suite name="ExamTests">
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+    <test name="AllTests">
+        <classes>
+            <class name="ProjectTest"/>
+            <class name="ProjectsTest"/>
+            <class name="IssueTest"/>
+
+        </classes>
+    </test>
+</suite>
