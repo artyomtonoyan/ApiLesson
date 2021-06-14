@@ -2,17 +2,16 @@ package base;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-
-import static setup.DriverSetup.getWebDriver;
+import setup.DriverHelper;
 
 public abstract class BasePage {
-    private static final JavascriptExecutor JAVASCRIPT_EXECUTOR = (JavascriptExecutor) getWebDriver();
+    private static final JavascriptExecutor JAVASCRIPT_EXECUTOR = (JavascriptExecutor) DriverHelper.get().getDriver();
     private static final Logger LOGGER = Logger.getLogger(BasePage.class);
     protected static final String BASE_URL = System.getProperty("selenium.url", "https://tree.taiga.io");
     protected WebDriver driver;
 
     public BasePage() {
-        this.driver = getWebDriver();
+        this.driver = DriverHelper.get().getDriver();
         String message = "Setting Driver: " + driver.toString();
         LOGGER.info(message);
     }

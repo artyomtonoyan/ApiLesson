@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import setup.DriverHelper;
 
-import static setup.DriverSetup.getWebDriver;
 
 public class WaitHelper {
 
@@ -21,7 +21,7 @@ public class WaitHelper {
         String message = "Waiting for the element: " + element.toString();
         LOGGER.info(message);
         try {
-            new WebDriverWait(getWebDriver(), DEFAULT_TIMEOUT)
+            new WebDriverWait(DriverHelper.get().getDriver(), DEFAULT_TIMEOUT)
                     .until(ExpectedConditions.visibilityOf((element)));
         } catch (WebDriverException e) {
             throw new Error("Element was not found: " + element.toString());
