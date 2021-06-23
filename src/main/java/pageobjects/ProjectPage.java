@@ -27,4 +27,14 @@ public class ProjectPage extends BasePage {
     public String getURL() {
         return BASE_URL + "/project/" + myProject.get("slug").getAsString();
     }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        WaitHelper.getInstance().waitForElementToDisplayed(projectName);
+    }
 }

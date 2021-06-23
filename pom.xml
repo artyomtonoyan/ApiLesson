@@ -37,6 +37,13 @@
                             <customFileName>chromedriver</customFileName>
                             <version>90.0.4430.24</version>
                         </driver>
+                        <driver>
+                            <name>geckodriver</name>
+                            <platform>mac</platform>
+                            <bit>64</bit>
+                            <customFileName>geckodriver</customFileName>
+                            <version>0.29.1</version>
+                        </driver>
                     </drivers>
                 </configuration>
             </plugin>

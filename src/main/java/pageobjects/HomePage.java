@@ -19,4 +19,14 @@ public class HomePage extends BasePage {
     public String getURL() {
         return BASE_URL;
     }
+
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        WaitHelper.getInstance().waitForElementToDisplayed(projectsIcon);
+    }
 }

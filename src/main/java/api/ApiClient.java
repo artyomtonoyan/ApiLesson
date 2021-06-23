@@ -240,4 +240,38 @@ public class ApiClient {
         }
         return response;
     }
+
+
+    public static Response patch(String url, JsonObject body, Map<String, String> headers) {
+        OkHttpClient client = new OkHttpClient();
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody requestBody = RequestBody.create(mediaType, body.toString());
+        Headers.Builder builder = new Headers.Builder();
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+            builder.add(entry.getKey(), entry.getValue());
+        }
+        Headers header = builder.build();
+        Request request = new Request.Builder()
+                .url(url).patch(requestBody)
+                .headers(header)
+                .build();
+        Response response = null;
+        try {
+            response = client.newCall(request).execute();
+        } catch (IOException e) {
+            LOGGER.error("PUT METHOD cannot be executed due to cancellation, a connectivity problem or timeout!");
+            e.printStackTrace();
+        }
+        if (response == null) {
+            throw new Error("Response is Null");
+        }
+        if (!response.isSuccessful()) {
+            try {
+                throw new Error("HTTP Error Code: " + response.code() + ", Content: " + JsonParser.parseString((response.body().string())).getAsJsonObject());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return response;
+    }
 }

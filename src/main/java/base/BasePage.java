@@ -2,10 +2,10 @@ package base;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import setup.DriverHelper;
 
-public abstract class BasePage {
-    private static final JavascriptExecutor JAVASCRIPT_EXECUTOR = (JavascriptExecutor) DriverHelper.get().getDriver();
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T> {
     private static final Logger LOGGER = Logger.getLogger(BasePage.class);
     protected static final String BASE_URL = System.getProperty("selenium.url", "https://tree.taiga.io");
     protected WebDriver driver;
@@ -61,7 +61,8 @@ public abstract class BasePage {
     }
 
     public void setItemInLocalStorage(String value, String key) {
-        JAVASCRIPT_EXECUTOR.executeScript(String.format(
+        ((JavascriptExecutor) DriverHelper.get().getDriver()).executeScript(String.format(
                 "window.localStorage.setItem('%s','%s');", value, key));
     }
+
 }

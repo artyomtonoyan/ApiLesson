@@ -9,6 +9,15 @@ public class LoginPage extends BasePage {
     }
 
     @Override
+    protected void load() {
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
+
+    @Override
     public String getURL() {
         return BASE_URL + "/login";
     }

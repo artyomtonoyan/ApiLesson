@@ -2,7 +2,6 @@ package json;
 
 import com.google.gson.JsonObject;
 
-
 public class JsonHelper {
     public static JsonObject createUserJson(String username, String password) {
         JsonObject user = new JsonObject();
@@ -32,5 +31,14 @@ public class JsonHelper {
         issue.addProperty("project", projectId);
         issue.addProperty("subject", subject);
         return issue;
+    }
+
+    public static JsonObject createEditedIssueJson(String subject, int version) {
+        JsonObject editedIssue = new JsonObject();
+        editedIssue.addProperty("subject", subject);
+        editedIssue.addProperty("version", 1);
+        editedIssue.addProperty("is_private", "false");
+
+        return editedIssue;
     }
 }

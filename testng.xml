@@ -1,11 +1,10 @@
-<suite name="ExamTests" parallel="methods" thread-count="3">
+<suite name="ExamTests" parallel="classes" thread-count="3">
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
     <test name="AllTests">
         <classes>
             <class name="ProjectTest"/>
-            <class name="ProjectsTest"/>
             <class name="IssueTest"/>
         </classes>
     </test>
