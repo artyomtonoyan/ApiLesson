@@ -14,6 +14,9 @@ import java.util.ArrayList;
 
 
 public class BaseTest {
+
+
+
     @BeforeMethod
     public void start() {
         LoginPage loginPage = new LoginPage();
@@ -31,9 +34,9 @@ public class BaseTest {
 
     @AfterSuite
     public void deleteAllProjects() {
-            ArrayList<String> projectIds = ApiHelper.getCurrentProjectsIds();
-            for (String projectId : projectIds) {
-                ApiHelper.deleteProject(projectId);
-            }
+        ArrayList<String> projectIds = ApiHelper.getCurrentProjectsIds();
+        for (String projectId : projectIds) {
+            ApiHelper.deleteProject(projectId);
+        }
     }
 }
