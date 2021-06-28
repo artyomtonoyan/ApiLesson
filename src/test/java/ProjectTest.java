@@ -10,14 +10,14 @@ import pageobjects.ProjectPage;
 import static org.testng.Assert.*;
 
 public class ProjectTest extends BaseTest {
-//    @Test
+    @Test
     public void projectCreation() {
         JsonObject projectResponse = ApiHelper.createProject(JsonHelper.createProjectJson("ProjectOne", "MyProjectOne", "false"));
         ProjectPage projectPage = (ProjectPage) new ProjectPage(projectResponse).get();
         assertEquals(projectPage.getProjectName().trim(), projectResponse.get("name").getAsString(), "Wrong project opened!");
     }
 
-//    @Test
+    @Test
     public void editProject() {
         JsonObject projectResponse = ApiHelper.createProject(JsonHelper.createProjectJson("ProjectForEditing", "ProjectToEdit", "false"));
         String editedName = "EditedProjectName";
@@ -26,7 +26,7 @@ public class ProjectTest extends BaseTest {
         assertEquals(projectPage.getProjectName().trim(), editedName, "Projects are not same");
     }
 
-//    @Test
+    @Test
     public void getProject() {
         JsonObject projectResponse = ApiHelper.createProject(JsonHelper.createProjectJson("ProjectForGetting", "ProjectToGet", "false"));
         JsonObject getObjectResponse = ApiHelper.getProject(projectResponse.get("id").getAsString());
@@ -34,7 +34,7 @@ public class ProjectTest extends BaseTest {
 
     }
 
-//    @Test
+    @Test
     public void deleteProject() {
         JsonObject projectResponse = ApiHelper.createProject(JsonHelper.createProjectJson("ProjectForEditing", "ProjectToEdit", "false"));
         ApiHelper.deleteProject(projectResponse.get("id").getAsString());
