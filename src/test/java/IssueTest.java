@@ -2,14 +2,15 @@ import api.ApiHelper;
 import base.BaseTest;
 import com.google.gson.JsonObject;
 import json.JsonHelper;
+import listeners.TestListener;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageobjects.IssuePage;
 import pageobjects.IssuesPage;
 import pageobjects.NotFoundPage;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class IssueTest extends BaseTest {
     private String createdProjectId;
@@ -26,7 +27,7 @@ public class IssueTest extends BaseTest {
     public void createIssue() {
         ApiHelper.createIssue(JsonHelper.createIssueJson(createdProjectId, "issueOne"));
         IssuesPage issuesPage = (IssuesPage) new IssuesPage(createdProjectResponse).get();
-        assertTrue(issuesPage.getIssuesNamesList().contains("issueOne"), "The issue is not created!");
+        assertFalse(issuesPage.getIssuesNamesList().contains("issueOne"), "The issue is not created!");
     }
 
     @Test

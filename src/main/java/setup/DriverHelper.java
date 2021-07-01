@@ -17,7 +17,7 @@ public class DriverHelper {
     }
 
     public WebDriver driver;
-    //    private static final String BROWSER = "remote";
+//        private static final String BROWSER = "chrome";
     private static final ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
     public WebDriver getDriver() {
@@ -25,13 +25,13 @@ public class DriverHelper {
 //            switch (BROWSER) {
 //                case "chrome":
 //                    System.setProperty("webdriver.chrome.driver",
-//                            "/Users/artyomtonoyan/ApiProject/src/main/resources/chromedriver");
+//                            System.getProperty("user.dir") + "/src/main/resources/chromedriver");
 //                    driver = new ChromeDriver();
 //                    driverThread.set(driver);
 //                    break;
 //                case "firefox":
 //                    System.setProperty("webdriver.gecko.driver",
-//                            "/Users/artyomtonoyan/ApiProject/src/main/resources/geckodriver");
+//                            System.getProperty("user.dir") + "/src/main/resources/geckodriver");
 //                    driver = new FirefoxDriver();
 //                    driverThread.set(driver);
 //                    break;
@@ -40,7 +40,7 @@ public class DriverHelper {
 //                    driver = new SafariDriver();
 //                    driverThread.set(driver);
 //                    break;
-//                case "remote":
+//                case "remote":c
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(System.getProperty("browser", "chrome"));
             capabilities.setCapability("enableVNC", true);
